@@ -49,6 +49,16 @@ function nieuwGeld() {
   geldMunt.textContent = muntjes; // Update de tekst van het muntjes element
   veranderBericht(); //Past het bericht aan op basis van nieuwe waarde muntjes
   restartButton.style.display = "inline";
+
+   if(muntjes > 60){
+    bankButton.style.display = "inline"
+  } else if (muntjes > 100){
+    tafelButton.style.display = "inline"
+  } else if (muntjes > 15){
+    vloerButton.style.display = "inline"
+  } else if (muntjes > 80){
+    behangButton.style.display = "inline"
+  } 
 }
 
 function verbergKnoppen() {
@@ -75,6 +85,24 @@ function toonEersteKnoppen() {
   
   let basisImage = document.querySelector("#imageMansion");
   basisImage.src = "images/mansion.jpg";
+
+    if(muntjes < 60){
+    bankButton.style.display = "none"
+    bericht.textContent = "Je hebt niet genoeg geld, ga werken!";
+    bericht.style.color = "red";
+  } else if (muntjes < 100){
+    tafelButton.style.display = "none"
+    bericht.textContent = "Je hebt niet genoeg geld, ga werken!";
+    bericht.style.color = "red";
+  } else if (muntjes < 15){
+    vloerButton.style.display = "none"
+    bericht.textContent = "Je hebt niet genoeg geld, ga werken!";
+    bericht.style.color = "red";
+  } else if (muntjes < 80){
+    behangButton.style.display = "none"
+    bericht.textContent = "Je hebt niet genoeg geld, ga werken!";
+    bericht.style.color = "red";
+  } 
 }
 
 restartButton.addEventListener("click", verbergKnoppen);
