@@ -14,7 +14,7 @@ const geldMunt = document.querySelector("#muntjes");
 const bericht = document.querySelector("#tekstje");
 
 //bankrekening
-let muntjes = 255;
+let muntjes = 20;
 
 function veranderBericht() {
   //Over of onder een bepaalde waarde van de muntjes pas ik een tekstje aan
@@ -22,8 +22,7 @@ function veranderBericht() {
     bericht.textContent = "Je hebt 500 muntjes aan salaris verdiend!";
     bericht.style.color = "#109010";
   } else if (muntjes <= 0) {
-    bericht.textContent =
-      "Oh nee! Je geld is op. Ga werken om bij te verdienen";
+    bericht.textContent = "Oh nee! Je geld is op. Ga werken om bij te verdienen";
     bericht.style.color = "red";
   } else {
     bericht.textContent = "Knap je huis op!";
@@ -34,7 +33,7 @@ function veranderBericht() {
 // Functie om de afbeelding en het geldbedrag te veranderen
 function veranderAfbeelding(afbeelding, kosten) {
   //bron chatgpt prompt: hoe kan ik parameters gebruiken om dit efficient te maken?
-  let basisImage = document.querySelector("#imageMansion"); //basis afbeelding aangeroepen van html
+  const basisImage = document.querySelector("#imageMansion"); //basis afbeelding aangeroepen van html
   basisImage.src = afbeelding; // Verander de bron van de afbeelding
   muntjes = muntjes - kosten; //kosten van bankrekening aftrekken
   geldMunt.textContent = muntjes; // Veranderd de tekst van het muntjes element
@@ -48,9 +47,8 @@ function nieuwGeld() {
   muntjes = muntjes + 500; // Verhoog de huidige muntjes met 500
   geldMunt.textContent = muntjes; // Update de tekst van het muntjes element
   veranderBericht(); //Past het bericht aan op basis van nieuwe waarde muntjes
-  restartButton.style.display = "inline";
 
-   if(muntjes > 60){
+  if(muntjes > 60){
     bankButton.style.display = "inline"
   } else if (muntjes > 100){
     tafelButton.style.display = "inline"
@@ -83,10 +81,10 @@ function toonEersteKnoppen() {
   bericht.textContent = "Knap je huis op!";
   bericht.style.color = "black";
   
-  let basisImage = document.querySelector("#imageMansion");
+  const basisImage = document.querySelector("#imageMansion");
   basisImage.src = "images/mansion.jpg";
 
-    if(muntjes < 60){
+  if(muntjes < 60){
     bankButton.style.display = "none"
     bericht.textContent = "Je hebt niet genoeg geld, ga werken!";
     bericht.style.color = "red";
@@ -132,6 +130,7 @@ vloerButton.addEventListener("click", function () {
 behangButton.addEventListener("click", function () {
   veranderAfbeelding("images/new_wallpaper.png", 80);
   behangButton.style.display = "none";
+  restartButton.style.display = "inline"
 });
 
 geldMunt.textContent = muntjes;
